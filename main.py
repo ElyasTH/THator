@@ -16,7 +16,7 @@ from keep_online import keep_alive
 from bs4 import BeautifulSoup as bs
 from discord.ext import commands
 
-client = commands.Bot(command_prefix="-", case_insensitive=True, intents = discord.Intents.all())
+client = commands.Bot(command_prefix="-", case_insensitive=True, intents = discord.Intents.all(), help_command = None)
 genius = lyricsgenius.Genius('8g6Noz7rPLHnKEzWfu3kCfUVMrVEJzYSpmMB9mIJ295_KVmYzTheZr_oXqTLfEdf')
 limit = False
 for x in db.keys():
@@ -581,8 +581,28 @@ async def scores(ctx, game: str):
   embed = discord.Embed(title=title, description=scores, color=0x90ee90)
   await ctx.send(embed=embed)
   
-
-
+@client.command()
+async def help(ctx):
+  await ctx.reply("لیست دستورات:" + "\n\n" +
+                  "Games:" + "\n" + 
+                 "-guess" + "\n" + 
+                 "-hangman" + "\n" +
+                 "-scores" + "\n"
+                 "-randomgame" + "\n" +
+                 "-recipe" + "\n\n" +
+                 "Music:" + "\n" +
+                 "-queue" + "\n" + 
+                 "-play" + "\n" + 
+                 "-skip" + "\n" +
+                 "-stop" + "\n" +
+                 "-qlist" + "\n" +
+                 "-volume" + "\n" +
+                 "-lyrics" + "\n" + 
+                 "-go" + "\n\n" + 
+                 "Filters:" + "\n" +
+                 "-add" + "\n" +
+                 "-del" + "\n" +
+                 "-list")
 
 @client.command()
 async def test(ctx):
